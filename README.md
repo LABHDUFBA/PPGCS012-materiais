@@ -14,5 +14,5 @@ Para maiores informações ver o [site da disciplina](https://ppgcs012.netlify.a
 
 ## Semanas
 
-- Semana 5 (06 - 10/09/2021): Introdução à linguagem de programação R ou Python
+- [Semana 5 (06 - 10/09/2021): Introdução à linguagem de programação R ou Python](https://github.com/LABHDUFBA/PPGCS012-tarefas/tree/main/sem5)
 
