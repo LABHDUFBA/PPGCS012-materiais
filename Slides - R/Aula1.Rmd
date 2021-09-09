@@ -69,7 +69,7 @@ Foi criado originalmente por **R**oss Ihaka e por **R**obert Gentleman no depart
 > "Tudo o que existe no R é um objeto"
 "Tudo o que acontece no R é o chamado de uma função"
 
-# Como pedir ajuda? 
+# Como pedir ajuda **fora do R**? 
 
 ![Mal comecei e já preciso pedir ajuda?](./images/help.jpg) 
 

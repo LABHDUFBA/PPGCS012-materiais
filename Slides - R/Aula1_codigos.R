@@ -70,6 +70,8 @@ sqrt(100)
 exp(1) 
 exp(2) 
 
+# OBS: "e" (numero de Neper) = 2.718281828459045235360287^2
+
 # Logaritmo natural (base e)
 log(4)
 log(exp(1))
@@ -85,7 +87,7 @@ log(4)/log(10) # log de quatro na base 10
 
 
 ############################################
-#### Obtendo ajuda: help
+#### Obtendo ajuda dentro do R: help
 
 # Para saber mais sobre uma função e sua utilização, consulte-a no arquivo de ajuda
 help(sqrt)
