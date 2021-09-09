@@ -104,7 +104,7 @@ No R, há cinco principais maneiras de pedir ajuda:
 - ***History**: painel com um histórico dos comandos rodados.
 
 
-## Rstudio: atalhos
+# Rstudio: atalhos
 
 - **CTRL+ENTER**: roda a linha selecionada no script. Os atalhos mais utilizado.
 - ***ALT+-***: (<-) sinal de atribuição. Você usará o tempo todo.
@@ -114,12 +114,12 @@ No R, há cinco principais maneiras de pedir ajuda:
 - ***CTRL+ALT+I***: cria um chunk no R Markdown.
 - ***ALT+SHIFT+K**: janela com todos os atalhos disponíveis.
 
-## Dicas de sobrevivência
+# Dicas de sobrevivência
 
 O diretório de trabalho (em inglês *W*orking *D*irectory ou *WD*) é a pasta no computador onde o R vai guardar todos os arquivos (base de dados, gráficos, imagens geradas).
 
 
-## Dicas de sobrevivência
+# Dicas de sobrevivência
 
 O símbolo *>* indica que o R está pronto para receber um comando:
 
@@ -135,7 +135,7 @@ O símbolo *>* muda para *+* se o comando estiver incompleto:
 
 *+* 
 
-## Dicas de sobrevivência
+# Dicas de sobrevivência
 
 Espaços entre os números não fazem diferença:
 
@@ -143,7 +143,7 @@ Espaços entre os números não fazem diferença:
 2+            2
 ```
 
-## Dicas de sobrevivência
+# Dicas de sobrevivência
 
 **O R é "case sensitive": diferencia maiúsculas de minúsculas**
 
@@ -155,12 +155,12 @@ Nome **não é igual a** nome
 f **não é igual a** F 
 
 
-## Dicas de sobrevivência
+# Dicas de sobrevivência
 
 Para executar um código a partir do script no RStudio, selecione **a linha desejada ou o trecho/objeto** e aperte o botão "RUN" ou CTRL+R ou CTRL+ENTER
 
 
-## Dicas de sobrevivência
+# Dicas de sobrevivência
 
 **Toda função deve ser executada com uso de parênteses**
 \center
@@ -172,25 +172,22 @@ Os valores dentro dos parênteses são chamados argumentos. São os inputs neces
 
 *NÃO* há espaço entre os parênteses e o nome da função
 
-## Dicas de sobrevivência: onde ficam salvos os resultados?
+# Dicas de sobrevivência: onde ficam salvos os resultados?
 
 ```{r, echo=TRUE}
 1 + 3 + 5 + 7
 ```
 
-![Esquema dos resultados no R](images/results.png)
+![Esquema dos resultados no R](./images/results.png)
 
-## Dicas de sobrevivência: onde ficam salvos os resultados?
-
-
+# Dicas de sobrevivência: onde ficam salvos os resultados?
 
 Note que o resultado é apenas mostrado na tela, nada é salvo na memória
 (*por enquanto*)
 
-![Esquema dos resultados no R](images/results2.png)
+![Esquema dos resultados no R](./images/results2.png)
 
-## O editor de scripts
-
+# O editor de scripts
 
 
 - Para criar rotinas computacionais é necessário utilizar um editor de scripts
@@ -199,7 +196,7 @@ Note que o resultado é apenas mostrado na tela, nada é salvo na memória
 
 - O arquvo dve ser salvo com a extensão *.R*
 
-## Comentando scripts
+# Comentando scripts
 
 - Para adicionar comentários ao script, utiliza-se o símbolo # antes do texto e/ou comandos. O que estiver depois do
 símbolo não será interpretado pelo R. 
@@ -211,83 +208,11 @@ Portanto:
 # 2 + 2 esta linha não será executada
 
 
-## R como calculadora
+# Criando objetos do R ou “salvando”os resultados
 
-![Operadores Aritméticos](images/operadores.png){width=190x}
+![Diagrama da memória RAM no R](./images/objetos.png)
 
-
-## R como calculadora
-
-- Adição
-
-1 + 1 
-1 + 1  + 1
-45 + 68
-(4+4) + 60
-4 + 34.5
-.00000001 + .01
-.021 + 87
-
-- Subtração
-
-25 - 2
-8 - 5
-(4+4) - 60
-
-## R como calculadora
-
-- Multiplicação
-
-6*5
-(4 + 5)*6
-4 + (5*6)
-
-- Divisao
-250/25
-(4 + 2)/3
-4 + 2/3
-10/3
-
-## R como calculadora
-
-- Potência
-2^10
-
-- Raiz quadrada
-sqrt(100)
-
-- Quaisquer outras raizes
-8^(1/3) #raiz cubica
-
-- Exponencial (e^x)
-exp(1) 
-exp(2) 
-
-- Logaritmo natural (base e)
-log(4)
-log(exp(1))
-
-- Logaritmo em qualquer base
-log(4)/log(10) # log de quatro na base 10
-
-## R como calculadora
-
-- Uso de parentesis
-
-1 + 3/4 + sqrt(65)
-
-(1 + 3)/4 + sqrt(65)
-
-1 + 3/(4 + sqrt(65))
-
-(1 + 3)/(4 + sqrt(65))
-
-## Criando objetos do R ou “salvando”os resultados
-
-![Diagrama da memória RAM no R](images/objetos.png)
-
-## Criando objetos do R ou “salvando”os resultados
-
+# Criando objetos do R ou “salvando”os resultados
 
 
 - Estas variáveis ficam armazenadas no chamado workspace do R
@@ -297,11 +222,11 @@ log(4)/log(10) # log de quatro na base 10
 - Para efetivamente salvar esas variáveis, podemos armazenar esse workspace do R em disco, em um arquivo chamado
 .Rdata
 
-## Criando objetos do R ou “salvando”os resultados
+# Criando objetos do R ou “salvando”os resultados
 
-![Diagrama da memória RAM no R](images/objetos2.png){width=180px}
+![Diagrama da memória RAM no R](./images/objetos2.png){width=180px}
 
-## Criando objetos do R ou “salvando”os resultados
+# Criando objetos do R ou “salvando”os resultados
 
 
 - Existem várias maneiras de atribuir um valor a uma variável e, novamente, isso não depende do tipo de valor que está sendo atribuído.
@@ -310,33 +235,32 @@ log(4)/log(10) # log de quatro na base 10
 
 - Ao contrário de outras linguagens de programação você não precisa definir o tipo de variável criada!
 
-## Prática: criando meu primeiro objeto no R
+# Prática: criando meu primeiro objeto no R
 
-x <- 1 (use a tecla de atalho **ALT+-**)
+x <- 1 (use a tecla de atalho **ALT MAIS A TECLA -**)
 
-(ao criar o objeto note no campo enviroment que ele vai aparecer lá)
+(ao criar o objeto note no campo enviroment que ele vai aparecer lá)--------->
 
 
-## Tipos de objetos atômicos no R
+# Tipos de objetos atômicos no R
 
 - Existem cinco classes básicas ou “atômicas” no R:
 
-- character
+- character (texto, string, character, caracteres)
 
-- numeric
+- numeric (número, valor real, numeric, double)
 
-- integer
+- integer (números inteiros)
 
-- complex
-
-- logical
-
-## Prática: crie cada um destes objetos no R
-
-![Vamos trabalhar](images/nerd.jpg)
+- logical (lógico, logical, booleano, valor TRUE/FALSE)
 
 
-## Comandos básicos I
+# Prática: crie cada um destes objetos no R
+
+![Vamos trabalhar](./images/nerd.jpg)
+
+
+# Comandos básicos I
 
 1.ls() é o comando que lista todos os objetos no ambiente do R. Não requer argumentos
 
@@ -346,19 +270,20 @@ x <- 1 (use a tecla de atalho **ALT+-**)
 
 4.CTRL+L limpa o terminal do RStudio
 
-## Minha primeira função 
+# Comandos básicos II
 
 funcao_somar_mais_um <- function(num){ 
   return(num+1)         
 }
 
-##  Meu primeiro loop 
+
+#  Meu primeiro loop 
 
 for (numero in 1:5){
   print (numero)
 }
 
-## Loops dentro de funções 
+# Loops dentro de funções 
 
 listadenumeros <- c(1,2,3,4,5)
 for (numero in listadenumeros){
