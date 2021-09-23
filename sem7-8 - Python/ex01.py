@@ -2,7 +2,7 @@ from urllib.request import urlopen
 from pprint import pprint
 from bs4 import BeautifulSoup
 
-url = 'https://flamboyant-rosalind-1cb48f.netlify.app/'
+url = 'https://exemplo-raspagem.netlify.app/'
 
 # abrir url com urlopen
 page_html = urlopen(url)
