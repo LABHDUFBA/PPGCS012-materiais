@@ -30,7 +30,7 @@
 1 + 1 
 1 + 1  + 1
 45 + 68
-(4+4) + 60
+(4 + 4) + 60
 4 + 34.5
 .00000001 + .01
 .021 + 87
@@ -39,13 +39,13 @@
 ##### Subtracao
 25 - 2
 8 - 5
-(4+4) - 60
+(4 + 4) - 60
 
 
 ##### Multiplicacao
-6*5
-(4 + 5)*6
-4 + (5*6)
+6 * 5
+(4 + 5) * 6
+4 + (5 * 6)
 
 
 ##### Divisao
@@ -111,10 +111,11 @@ exp("a")
 ############################################
 #### Objetos (parte 1)
 
-# Podemos guardar informacoes e resultados dentro de "objetos". Ou seja, objetos
-# sao como "recipientes" de informacoes (de qualquer tipo). Podemos salvar o 
-# numero 2 dentro de um objeto chamado "x". Para isso simplesmente dizemos que 
-# x = 2. Depois, para recuperar a informacao guardada dentro desse objeto, basta
+# Podemos guardar informacoes e resultados dentro de "objetos". 
+#Ou seja, objetos sao como "recipientes" de informacoes (de qualquer tipo). 
+#Podemos salvar o numero 2 dentro de um objeto chamado "x". 
+# Para isso simplesmente dizemos que x <- 2. 
+# Depois, para recuperar a informacao guardada dentro desse objeto, basta
 # digitar seu nome e pressionar ENTER:
 
 x <- 2
@@ -140,11 +141,11 @@ y-x
 
 
 # E a operação realizada entre dois objetos pode ser ainda guardada num terceiro:
-w = x - y
+w <-  x - y
 
 
 # Um objeto pode ser uma cópia de outro, inclusive:
-z = w
+z <- w
 
 ############################################
 #### Listando e removendo objetos existentes
@@ -175,7 +176,6 @@ rm(list=ls())
 # - Nomes que comecam com caracteres especiais: _a <- 1 ou .1 <- 1
 # - Nomes com espaco: meu objeto <- 1
 # - Tambem é boa pratica nao usar letras maiusculas porque o R é case sensitive.
-
 
 
 ############################################
@@ -265,6 +265,7 @@ z
 length(z)
 
 
+
 # Podemos tambem atribuir nomes aos componentes
 b = c(24,29,22)
 b
@@ -317,7 +318,7 @@ class(idades)
 
 
 # E podemos compor vetores textuais:
-vetor_textual = c("rogerio","leonardo","denisson")
+vetor_textual <- c("rogerio","leonardo","denisson")
 vetor_textual
 
 
