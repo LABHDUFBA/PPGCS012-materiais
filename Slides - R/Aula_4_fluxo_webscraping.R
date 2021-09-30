@@ -2,10 +2,14 @@
 
 # Ativar as libraries: rvest (e/ou xml2)
 
+# 0) Selecione o endereço da página ou url e crie um objeto url
+
+url <- "https://www.pagina.com.br"
+
 # 1) ler o html da pagina escolhida
 
 # função: 
-read_html("endereço da página")
+read_html("url")
 
 # 2) Selecione o node que contém a informação que você quer
 
