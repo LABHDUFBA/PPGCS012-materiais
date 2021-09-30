@@ -38,4 +38,9 @@ for (i in 1:10){
 
 df$tags <- gsub("Tags: ", "", df$tags)
 
+# Salvando em .csv
+
+write.csv()
+
+
 # Parabéns HACKER DAS HUMANIDADES!
