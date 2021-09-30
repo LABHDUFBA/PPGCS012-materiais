@@ -3,7 +3,7 @@ rm(list = ls())
 # Ativando o pacote
 library(rvest)
 
-# lendo o html
+# Qual a url?
 url <- "https://quotes.toscrape.com/"
 
 

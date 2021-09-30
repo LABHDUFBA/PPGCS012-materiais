@@ -3,14 +3,18 @@ rm(list = ls())
 # Ativando o pacote
 library(rvest)
 
-# lendo o html
+# criando uma url base
 url_base <- "https://quotes.toscrape.com/page/numeracao/"
 
-
+# criando um data frame vazio
 df <- data.frame()
 
+#
 for (i in 1:10){
-  url <- gsub("numeracao", i, html_base)
+  #
+  url <- gsub("numeracao", i, url_base)
+  #
+  print(url)
   # pegando o texto/citação
   texto <- url %>% 
     read_html() %>%  
@@ -28,7 +32,7 @@ for (i in 1:10){
     html_text2()
   # a cada loop ir jogando no data.frame
   df <- rbind(df, cbind(texto, autor, tags)) #compilando tudo
-}
+  }
 
 # limpando (opcional)
 

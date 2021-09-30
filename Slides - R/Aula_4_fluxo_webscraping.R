@@ -2,14 +2,21 @@
 
 # Ativar as libraries: rvest (e/ou xml2)
 
-# 0) Selecione o endereço da página ou url e crie um objeto url
+#install.packages("rvest")
+library(rvest)
+
+# 0) Selecione o endereço da página ou url e 
+# crie um objeto url
 
 url <- "https://www.pagina.com.br"
+
+url <- "https://quotes.toscrape.com/"
 
 # 1) ler o html da pagina escolhida
 
 # função: 
-read_html("url")
+html <- rvest::read_html(url)
+class(html)
 
 # 2) Selecione o node que contém a informação que você quer
 
@@ -20,6 +27,7 @@ html_nodes()
 # Prrefria usar esta aqui
 html_element()
 html_elements()
+
 ###############################################################
 ############### PARE TUDO E PRESTE ATENÇÃO NISSO AQUI #########
 
@@ -33,7 +41,7 @@ html_elements(css = "bendito_css")
 # sua informação dentro do site é a coisa mais fundamental
 
 # Para saber qual é o XPATH OU CSS é preciso testar até ver o que funciona 
-# melhor. Não se preocupe algumas ferramentas vão te ajudar nisso:
+# melhor. Não se preocupe, algumas ferramentas vão te ajudar nisso:
 
 # https://selectorgadget.com/
 # https://chrome.google.com/webstore/detail/scraper/mbigbapnjcgaffohmbkdlecaccepngjd
