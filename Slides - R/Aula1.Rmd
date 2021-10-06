@@ -205,7 +205,7 @@ Portanto:
 
 2 + 2 # esta linha será executada
 
-# 2 + 2 esta linha não será executada
+\\# 2 + 2 esta linha não será executada
 
 
 # Criando objetos do R ou “salvando”os resultados
