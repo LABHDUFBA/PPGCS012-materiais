@@ -40,7 +40,11 @@ df$tags <- gsub("Tags: ", "", df$tags)
 
 # Salvando em .csv
 
-write.csv()
+write.csv(df, "./Slides - R/csv/df_quotes_to_scrape.csv")
 
+# salvando em excel
+#install.packages("xlsx")
+
+xlsx::write.xlsx(df, "./Slides - R/csv/df_quotes_to_scrape.xls")
 
 # Parabéns HACKER DAS HUMANIDADES!
