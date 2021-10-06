@@ -230,7 +230,7 @@ acao <- 1 # bom
 # Em especial, pensando em análise de dados, precisamos estudá-los pois cada 
 # coluna de um DATA FRAME (calma que você vai saber o que é!) será representada como um vetor.
 
-# Vetores no R são apenas conjuntos INXDEXADOS de valores. 
+# Vetores no R são apenas conjuntos INDEXADOS de valores. 
 # Para criá-los, basta colocar os valores separados por vírgulas dentro de um c().
 
 c(1,2,3,4,5,6)
@@ -245,8 +245,9 @@ x
 
 
 # E podemos fazer operacoes com vetores normalmente:
-x <-  c(1 , 2 , 3 , 4 , 5 , 6)
-y <- c(2,2,2,2,2,2)
+       p1-p2-p3-p4-p5-p6
+x <- c(1, 2, 3, 4, 5, 6)
+y <- c(2, 2, 2, 2, 2, 2)
 
 x+y #soma elemento-a-elemento
 x-y #substracao elemento-a-elemento
@@ -256,9 +257,10 @@ x/y #divisao elemento-a-elemento
 x %*% y # produto escalar
 
 
-# Para verificar o numero de componentes de um vetor, usamos a funcao **length**
+# Para verificar o numero de componentes de um vetor, 
+# usamos a funcao **length**
 length(x)
-length(x + y)
+length(y)
 
 z <- x + y
 z
@@ -291,17 +293,23 @@ alunos
 ############################################
 ##### Vetores (parte 2) - Introducao a classes de vetores
 
-# Semelhantes aos objetos atômicos, há varios tipos (classes) de vetores. 
+# Semelhantes aos objetos atômicos, 
+# há varios tipos (classes) de vetores. 
 
-# A classificacao depende do tipo de informacao que é armazenada. 
+# A classificacao depende do tipo de informacao 
+# que é armazenada. 
 
-# Vetores que contem numeros reais, sao chamados **numeric**. 
-# Vetores que contem informacao textual sao chamados **character**. 
+# Vetores que contem numeros reais, 
+#sao chamados **numeric**. 
 
-#Podemos descobrir a classe de um vetor atraves da funcao **class**.
+# Vetores que contem informacao textual 
+# sao chamados **character**. 
 
-nomes = c("Camila","Joao","Leandro","Alessandro","Rita")
-idades = c(13,31,38,32,19,41)
+#Podemos descobrir a classe de um vetor atraves 
+# da funcao **class**.
+
+nomes <- c("Camila","Joao","Leandro","Alessandro","Rita")
+idades <- c(13,31,38,32,19)
 
 class(nomes)
 class(idades)
@@ -491,7 +499,7 @@ as.complex(x)
 j = c("Pedro", "Antonio", "Fernando","Claudia")
 j
 
-j[1]
+
 j[2] 
 j[20] #nao existe valor na vigesima posicao de j
 j[2:4]
@@ -682,12 +690,16 @@ A %*% A
 # Para criar um dataframe, usamos a funcao **data.frame()**. Devemos tambem especificar
 # o nome das colunas/variaveis:
 
-dados = data.frame(Nomes=c("Antonio","Gilberto","Mauricio","Isabela"),
+df = data.frame(Nomes=c("Antonio","Gilberto","Mauricio","Isabela"),
                    Profissoes=c("Video Maker","Comerciante","Bancario","Estudante"),
                    Cidades=c("Belo Horizonte","Sao Paulo","Belo Horizonte","Sao Paulo"),
-                   Idades=c(65,50,67,19),
-                   stringsAsFactors=F)
-dados
+                                   Idades=c(65,50,67,19))
+data.frame() # criar um df
+View(df) # visualizar o df
+head(df) # visualizar as 1as obs do df
+tail(df) # visualizar as últimas obs do df
+dim(df) # visulizar as dimensões do df
+str(df) # visdualizar a estrutura do df
 
 # E facil reconhecer visualmente um dataframe. Mas uma avaliacao precisa pode ser
 # feita:  **data.frame** e um tipo especifico de objeto (classe) do R:
