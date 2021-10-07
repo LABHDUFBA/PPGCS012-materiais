@@ -2,9 +2,12 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
 def open_page(url):
-	url_open = urlopen(url)
-	bs = BeautifulSoup(url_open.read(), 'html.parser')
-	return bs
+    '''
+	Função para abrir a url e retornar o objeto BeautifulSoup
+	'''	
+    url_open = urlopen(url)
+    bs = BeautifulSoup(url_open.read(), 'html.parser')
+    return bs
 
 def quotes_infos(bs, output):
 	quotes_box = bs.find_all('div',{'class':'quote'})
@@ -12,7 +15,10 @@ def quotes_infos(bs, output):
 		for quote in quotes_box:
 			q_text = quote.find('span',{'class':'text'})
 			q_author = quote.find(class_='author')
-			f.write(f'Citação: {q_text.text}\nPor {q_author.text}\n')
+			q_tags = quote.find(class_='tags')
+			tags = q_tags.find('meta')['content']
+			print(tags)
+			f.write(f'Citação: {q_text.text}\nPor {q_author.text}. Tags: {tags}\n')
 
 def next_page(url, bs):
 	try:
@@ -29,7 +35,7 @@ url_inicial = 'https://quotes.toscrape.com'
 # use while True to loop through all pages
 while True:
 	bs = open_page(url_inicial)
-	quotes_infos(bs, 'quotations01')
+	quotes_infos(bs, 'quotations02')
 	next_link = next_page(url_inicial, bs)
 	# if the next page link is not found, break the loop
 	if next_link == None:
