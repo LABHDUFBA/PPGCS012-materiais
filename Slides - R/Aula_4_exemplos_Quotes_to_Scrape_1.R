@@ -2,8 +2,10 @@ rm(list = ls())
 
 # Ativando o pacote
 library(rvest)
+library(tidyverse)
 
 # Qual a url?
+
 url <- "https://quotes.toscrape.com/"
 
 
@@ -30,7 +32,7 @@ tags <- url %>%
   html_text2()
 
 # convertendo para um df
-df <- data.frame(texto, autor, tags)
+df <- data.frame(autor,texto, tags)
 
 # limpando (opcional)
 

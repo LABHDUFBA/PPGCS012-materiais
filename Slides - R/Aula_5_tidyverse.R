@@ -16,7 +16,10 @@ glimpse(df)
 df 
 
 
-# Qual a média de altura dos personagens Masculinos?
+
+
+# Qual a média de altura dos 
+# personagens Masculinos agrupados por espécie?
 
 df %>% 
   filter(genero == "Masculino") %>% 

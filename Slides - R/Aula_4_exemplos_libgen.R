@@ -4,12 +4,29 @@ rm(list = ls())
 library(rvest)
 
 # lendo o html
-url <- "http://libgen.rs/search.php?req=sociologia&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def"
+url <- "http://libgen.rs/search.php?&req=sociologia&phrase=1&view=simple&column=def&sort=def&sortmode=ASC&page=numeracao"
+
+
+url_2 <- gsub("numeracao", 2, url)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 tabela <- url %>% 
   read_html() %>% 
   html_element(xpath = "/html/body/table[3]") %>%
   html_table(header = T, trim = T)
+
 # convertendo para df
 df <- as.data.frame(tabela)
 

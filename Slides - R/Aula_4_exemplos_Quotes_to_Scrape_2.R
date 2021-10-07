@@ -2,6 +2,7 @@ rm(list = ls())
 
 # Ativando o pacote
 library(rvest)
+library(tidyverse)
 
 # criando uma url base
 url_base <- "https://quotes.toscrape.com/page/numeracao/"
@@ -31,9 +32,10 @@ for (i in 1:10){
     html_elements(css = ".tags") %>%
     html_text2()
   # a cada loop ir jogando no data.frame
-  df <- rbind(df, cbind(texto, autor, tags)) #compilando tudo
+  df <- rbind(df, cbind(autor, texto, tags)) #compilando tudo
   }
 
+?html_t
 # limpando (opcional)
 
 df$tags <- gsub("Tags: ", "", df$tags)

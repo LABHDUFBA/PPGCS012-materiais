@@ -19,8 +19,14 @@ texto <- url %>%
   html_text()
 
 # pegando as tabelas - com defeito
-tabelas <- url %>% 
+tab_cor <- url %>% 
   read_html() %>% 
-  html_elements(xpath = "//tbody") %>%
+  html_elements(xpath = "//*[@id='mw-content-text']/div[1]/table[2]/tbody") %>%
   html_table(header = T, trim = T)
+
+tab_cor <- tab_cor[[1]]
+
+
+
+
 
