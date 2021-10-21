@@ -165,6 +165,11 @@ starwars_tbl %>%
 starwars_tbl %>% 
   filter(genero == "Feminino")
 
+## Filtrando por todas as especies EXCETO os Humanos
+
+starwars_tbl %>% 
+  filter(especie != "Humano") ## ATENÇÃO AO SINAL
+
 ## filtrar os personagens sem cabelo
 
 starwars_tbl %>% 
@@ -186,19 +191,24 @@ starwars_tbl %>% filter(especie == "Droide", cor_do_cabelo == "Ouro")
 starwars_tbl %>% 
   filter(especie == "Wookiee" | especie == "Droide")
 
+## Importante!!! FILTRANDO OS NA
+
+starwars_tbl %>% 
+  # preste bem atenção abaixo
+  # O sinal de exclação quer dizer: "não quero" ou "elimine"
+  # is.na são os valores NA
+  filter(!is.na(massa)) # experimente tirar e colocar !
 
 ### Combinando filter e select
 
 ## filtrar por personagens com mais de 130 kg 
-#  e selecione os nomes e a cor dos olhos
+#  e selecione os nomes, a massa e a cor dos olhos
   
 starwars_tbl %>% 
   filter(massa > 130) %>% 
-  select(nome, cor_dos_olhos)
+  select(nome, massa, cor_dos_olhos)
 
 # 3 - mutate: Cria novas (ou modifica) variáveis (colunas).
-# 5 - arrange: Ordena o data.frame de acordo com os valores de uma(s) coluna(s).
-
 
 # Cria a coluna altura em metros a partir da coluna altura 
 # que esta em centimetros
@@ -221,12 +231,19 @@ starwars_tbl %>%
   select(nome, massa) %>%
   mutate(massa2x = massa * 2)
 
-# 4 - summarise (ou summarize): Reduz uma série de valores de uma coluna em um valor apenas.
+# 4 - summarise (ou summarize): 
+# Reduz uma série de valores de uma coluna em um valor apenas.
+# ou seja, a funçÃO que recebem n elementos e retornam apenas um valor. 
+
+# Vamos calcular a maior altura e a massa média:
+
+starwars_tbl %>% 
+  summarise(max_altura = max(altura, na.rm = T),
+            massa_media = mean(massa, na.rm = T))
 
 
-
-
-# 5 - arrange: Ordena o data.frame de acordo com os valores de uma(s) coluna(s).
+# 5 - arrange: Ordena o data.frame de acordo 
+# com os valores de uma(s) coluna(s).
 
 # Cria coluna com o indice de massa corporal e ordena do maior para o menor
 
@@ -234,20 +251,57 @@ starwars_tbl %>%
   mutate(IMC = massa / ((altura / 100)^2)) %>% 
   # selecionar apenas o nome e o IMC
   select(nome, IMC) %>% 
-  # ordenar do maior para o menor (-)
-  arrange(-IMC)
+  # ordenar do maior para o menor 
+  arrange(-IMC) # usar (-) ou arrange(desc(IMC))
 
 ## Sabia que o Jabba the Hut era o mais obeso!
 
+## filtrar por personagens com mais de 130 kg 
+#  selecione os nomes, a massa e a cor dos olhos
+#  Ordene do mais pesado para o menos pesado
 
-## Combinando tudo!
+starwars_tbl %>% 
+  filter(massa > 130) %>% 
+  select(nome, massa, cor_dos_olhos) %>% 
+  arrange(-massa)
+
+# 6 - group_by
+# pode ser usada em conjunto com os verbos, 
+# de maneira a fazer operações por grupos de valores de coluna(s).
 
 # Qual a média de altura dos 
 # personagens Masculinos agrupados por espécie?
 
-df %>% 
+starwars_tbl %>% 
   filter(genero == "Masculino") %>% 
   #drop_na() %>% 
   group_by(especie) %>% 
   summarise(mean(altura))
- 
+
+# Qual a media de altura e massa agrupadas por especie e sexo?
+
+starwars_tbl %>% 
+  group_by(especie, sexo_biologico) %>%
+  select(altura, massa) %>%
+  summarise(
+    media_altura = mean(altura, na.rm = TRUE),
+    media_massa = mean(massa, na.rm = TRUE)
+    )
+
+
+## Contando quantos personagens nós temos por espécie?
+
+## dica: ordenando a gente já sabe quem é a especie que 
+##       mais aparece
+
+starwars_tbl %>% 
+  group_by(especie) %>% 
+  count()
+
+
+
+## Exercícios
+
+# Quantos humanos existem de cada gênero?
+# Quantos indivíduos não são nem homens nem mulheres?
+
