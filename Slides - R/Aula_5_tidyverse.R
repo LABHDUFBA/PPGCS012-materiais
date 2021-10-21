@@ -33,10 +33,6 @@ tidyverse_packages()
 
 # - Tibbles são data frames com melhorias
 
-# - Principal diferença (data.frame vs. tibble): forma em que a data frame é apresentada no console e tidyr recebem uma tibble e retornam uma tibble
-
-# - Tibbles são data frames com melhorias
-
 # - Principal diferença (data.frame vs. tibble): 
 # forma em que a data frame é apresentada no console
 
@@ -45,13 +41,19 @@ tidyverse_packages()
 # Exemplos
 
 # Criando um tibble denominado startwars_tbl
+# só precisa uma vez!
+install.packages("tidyverse")
+install.packages("remotes")
+# Instalação via github
+remotes::install_github("cienciadedatos/dados")
 
+####### criando uma tibble starwars
 starwars_tbl <- dados::dados_starwars
 starwars_tbl
 # qual a classe?
 class(starwars_tbl)
 
-# Criando um datsframe denominado startwars_df
+# Criando um dataframe denominado startwars_df
 
 starwars_df <- as.data.frame(starwars_tbl)
 starwars_df
@@ -76,20 +78,21 @@ glimpse(starwars_tbl)
 
 library(magrittr)
 a <- c(5,7,9,10)
+# sem pipe
 sqrt(sum(a))
+# com pipe
 a %>% sum %>% sqrt
-
 
 # Funções básicas (verbos)
 
-#O dplyr oferece 5 verbos (funções) básicos que resolvem 
+#O dplyr oferece 6 verbos (funções) básicos que resolvem 
 # os principais problemas com dados:
 
-# 1 - select: Seleciona colunas.
+# 1 - select: Selecionar colunas.
 
-# 2 - filter: Filtra registros (linhas).
+# 2 - filter: Filtrar linhas.
 
-# 3 - mutate: Cria novas (ou modifica) variáveis (colunas).
+# 3 - mutate: criar novas (ou modificar) variáveis (colunas).
 
 # 4 - summarise (ou summarize): Reduz uma série de valores de uma coluna em um valor apenas.
 
@@ -107,11 +110,12 @@ a %>% sum %>% sqrt
 ## o(s) argumento(s) pertinente(s) à função: 
 ## nomes de colunas, funções, condições. 
 
-### A seguir vamos utilizar as funções para ficar mais clara sua sintaxe
+### A seguir vamos utilizar as funções para ficar mais 
+#   clara sua sintaxe
 
 
         #####################################
-        ######## Exemplos   dply ############
+        ######## Exemplos   dplyr ############
         #####################################
 
 ### Usando o pacote dados
@@ -120,9 +124,9 @@ a %>% sum %>% sqrt
 library(dados)
 library(tidyverse)
 
-starwars_tbl <- dados::dados_starwars# como tibble
+starwars_tbl <- dados::dados_starwars # como tibble
 #starwars_df <- as.data.frame(dados::dados_starwars) # como data.frame
-
+View(starwars_tbl)
 
 # 1 - select: Seleciona colunas.
 
@@ -140,10 +144,11 @@ starwars_tbl %>%
   select(1:5)
 
 
-## Selecionar todas as colunas exceto filmes
+## Selecionar todas as colunas exceto filmes 
+## e naves_espaciais
 
 starwars_tbl %>% 
-  select(-filmes)
+  select(-filmes, -naves_espaciais)
 
 # Outras opções
 
@@ -151,6 +156,11 @@ starts_with(): #colunas que começam com um prefixo
 ends_with(): #colunas que terminam com um sufixo
 contains(): #colunas que contêm uma string
 last_col(): #última coluna
+
+## Seleciona as colunas que começam com "cor"
+
+  starwars_tbl %>% 
+  select(starts_with("cor"))
 
 
 # 2 - filter: Filtra registros (linhas).
@@ -170,10 +180,18 @@ starwars_tbl %>%
 starwars_tbl %>% 
   filter(especie != "Humano") ## ATENÇÃO AO SINAL
 
-## filtrar os personagens sem cabelo
+## filtrar os personagens sem cabelo (NA + Nenhum)
 
 starwars_tbl %>% 
-  filter(is.na(cor_do_cabelo))
+  filter(is.na(cor_do_cabelo) | cor_do_cabelo == "Nenhum")
+
+# Operadores 
+
+== quero extamente isso
+!= não quero exatamente isso
+| = OU
+& = E
+cor_do_cabelo = lista os valores NA
 
 ### Combinando filters
 
@@ -184,7 +202,8 @@ starwars_tbl %>%
 
 ## filtrar pelos Droides com pele cor de ouro (diferentes var)
 
-starwars_tbl %>% filter(especie == "Droide", cor_do_cabelo == "Ouro")
+starwars_tbl %>% 
+  filter(especie == "Droide" & cor_da_pele == "Ouro")
 
 ## filtrar por todos os Wookiees OU Droides (mesma var)
 
@@ -216,12 +235,21 @@ starwars_tbl %>%
 starwars_tbl %>% 
   mutate(altura_em_metros = altura/100) %>% 
   # selecionar apenas o nome e a altura
-  select(nome, altura_em_metros)
+  select(nome, altura_em_metros) 
+
+# Criar "cor_dos_olhos_ouro" trocando Amarelo por Amarelo_ouro
+
+starwars_tbl %>% 
+  mutate(cor_dos_olhos_ouro = gsub("Amarelo", "Amarelo_ouro", 
+                                   cor_dos_olhos)) %>% 
+  # selecionar apenas o nome e a altura
+  select(nome, cor_dos_olhos_ouro) 
+
 
 # Cria coluna com o indice de massa corporal
 
 starwars_tbl %>% 
-  mutate(IMC = massa / ((altura / 100)^2)) %>% 
+  mutate(IMC = massa/((altura / 100)^2)) %>% 
   # selecionar apenas o nome e o IMC
   select(nome, IMC) 
 
@@ -241,6 +269,11 @@ starwars_tbl %>%
   summarise(max_altura = max(altura, na.rm = T),
             massa_media = mean(massa, na.rm = T))
 
+# Vamos somar todas as alturas:
+
+starwars_tbl %>% 
+  summarise(sum(altura, na.rm = T)/100)
+  
 
 # 5 - arrange: Ordena o data.frame de acordo 
 # com os valores de uma(s) coluna(s).
@@ -261,22 +294,23 @@ starwars_tbl %>%
 #  Ordene do mais pesado para o menos pesado
 
 starwars_tbl %>% 
-  filter(massa > 130) %>% 
+  filter(massa >= 130) %>% 
   select(nome, massa, cor_dos_olhos) %>% 
   arrange(-massa)
 
 # 6 - group_by
-# pode ser usada em conjunto com os verbos, 
-# de maneira a fazer operações por grupos de valores de coluna(s).
+# pode/deve ser usado em conjunto com os verbos, 
+# de maneira a fazer operações por grupos de valores nas coluna(s).
 
 # Qual a média de altura dos 
-# personagens Masculinos agrupados por espécie?
+# personagens Masculinos agrupados por espécie e ordenados
+# do maior para o menor?
 
 starwars_tbl %>% 
   filter(genero == "Masculino") %>% 
-  #drop_na() %>% 
   group_by(especie) %>% 
-  summarise(mean(altura))
+  summarise(media_altura = mean(altura)) %>% 
+  arrange(-media_altura)
 
 # Qual a media de altura e massa agrupadas por especie e sexo?
 
@@ -296,7 +330,8 @@ starwars_tbl %>%
 
 starwars_tbl %>% 
   group_by(especie) %>% 
-  count()
+  count() %>% 
+  arrange(-n)
 
 
 

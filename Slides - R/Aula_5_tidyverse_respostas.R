@@ -7,8 +7,9 @@ starwars_tbl %>%
 
 ## resposta: 35 humanos no total: 9 femininos, 26 masculinos.
 
-# Quantos indivíduos não são nem homens nem mulheres?
+# Quantos indivíduos tem como gênero NA?
 
 starwars_tbl %>% 
   group_by(genero) %>%
   count()
+
