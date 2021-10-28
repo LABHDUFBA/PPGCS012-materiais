@@ -114,9 +114,10 @@ planilha1 <- read_excel("./Slides - R/dados/Pasta1.xlsx", sheet = "Planilha2" )
 
 
 # Lendo arquivos zip
+library(tidyverse)
 
-df <- unzip("./Slides - R/dados/discursos.zip", "discursos.csv") %>% 
-       read_csv()
+df <- unzip("./Slides - R/dados/discursos.zip", "discursos.csv") %>%
+  read_csv()
 
 # Salvando dados ----------------------------------------------------------
 
