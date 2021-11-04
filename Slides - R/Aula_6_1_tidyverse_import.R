@@ -7,11 +7,12 @@
 # Apresentação modificada de "https://github.com/curso-r/202110-r4ds-1)"
 
 ## A primeira coisa, fundamental para a ciência de dados são
-## os própios dados.
+## os próprios dados.
 
 ## Aprender a fazer o download e abrir as diferentes bases 
 ## de dados é parte importante e demanda muita atenção!!
 
+getwd()
 
 # Caminhos até o arquivo --------------------------------------------------
 
@@ -50,8 +51,8 @@
 # CSV = "comma separated values" - ‘valores separados por vírgula’
 
 imdb <- read.csv("./Slides - R/dados/imdb.csv",  #caminho para o arquivo
-                 sep = ",", 
-                 header = T, # meus dados tem cabeçalho?
+                 #sep = ";", # não é necessário indicar o separador
+                 header = T, # meus dados possuem tem cabeçalho?
                  encoding = "UTF-8") #Enconding
 
 # Opcional read.csv2: tb se destinam à leitura de arquivos csv
@@ -69,6 +70,7 @@ library(tidyverse)
 
 imdb_csv <- read_csv(file = "./Slides - R/dados/imdb.csv", 
                      show_col_types = FALSE) # silenciar mensagem
+
 # vem do pacote readr
 
 class(imdb_csv)
@@ -84,9 +86,19 @@ imdb_delim <- read_delim("./Slides - R/dados/imdb.csv", delim = ",")
 imdb_delim <- read_delim("./Slides - R/dados/imdb2.csv", delim = ";")
 
 # direto da internet
-imdb_csv <- read_csv("https://raw.githubusercontent.com/curso-r/202005-r4ds-1/master/dados/imdb.csv")
+imdb_web <- read_csv("https://raw.githubusercontent.com/curso-r/202005-r4ds-1/master/dados/imdb.csv")
 
 # Interface point and click do RStudio também é útil!
+
+# Lendo arquivos json
+
+library(jsonlite)
+
+imdb_json <- fromJSON("./Slides - R/dados/imdb.json",
+  simplifyVector = TRUE,
+  flatten = FALSE)
+write.csv(imdb_json, "./Slides - R/dados/imdb_convertido.csv")
+
 
 # Lendo arquivos do Excel -------------------------------------------------
 
@@ -95,12 +107,17 @@ library(readxl)
 imdb_excel <- read_excel("./Slides - R/dados/imdb.xlsx")
 excel_sheets("./Slides - R/dados/imdb.xlsx")
 
-# quando queremos importar dados de uma aba específica
+# quando queremos importar dados de uma planilha específica
 imdb_excel <- read_excel("./Slides - R/dados/imdb.xlsx", sheet = "Sheet1" )
 
-# lendo arquivos zip
+planilha1 <- read_excel("./Slides - R/dados/Pasta1.xlsx", sheet = "Planilha2" )
 
-df <- read_csv(unzip("./Slides - R/dados/discursos.zip", "discursos.csv"))
+
+# Lendo arquivos zip
+library(tidyverse)
+
+df <- unzip("./Slides - R/dados/discursos.zip", "discursos.csv") %>%
+  read_csv()
 
 # Salvando dados ----------------------------------------------------------
 
@@ -126,5 +143,6 @@ write_xlsx(imdb_csv, path = "dados_output/imdb.xlsx")
 imdb_rds <- readr::read_rds("dados/imdb.rds")
 readr::write_rds(imdb_rds, file = "dados/imdb_rds.rds")
 
+write_rds(df2, "./Slides - R/dados/dfs.rds")
 
 

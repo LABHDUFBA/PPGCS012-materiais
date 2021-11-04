@@ -191,15 +191,19 @@ w <- 5
 
 # filter ------------------------------------------------------------------
 
-filter(imdb, ano >= 2010)
+imdb %>% filter(ano >= 2010)
 
 # Filtrando uma coluna da base
 imdb %>% filter(ano >= 2010)
-imdb %>% filter(diretor == "Quentin Tarantino")
+
+imdb %>% filter(diretor == "Quentin Tarantino") %>% 
+          mutate(lucro = receita - orcamento) %>%
+          select(titulo, ano, lucro) %>% 
+          arrange(-lucro)
 
 # pergunta do Pedro
-imdb %>% filter(diretor %in% c("Quentin Tarantino", 
-                               "quentin tarantino"))
+imdb %>% filter(diretor %in% c("James Cameron"))
+
 
 # Vendo categorias de uma variável
 unique(imdb$cor) # saída é um vetor
