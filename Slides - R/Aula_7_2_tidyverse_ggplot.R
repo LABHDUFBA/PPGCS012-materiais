@@ -3,13 +3,15 @@
 #######################################################
 
 
-# Ordenamento e tratando via pipe antes do plot + modificações estéticas ----------
+# dplyr antes do plot + modificações estéticas ----------
 
 # altura x nome
 
 starwars %>% 
   # filtrando e eliminando os NA
   filter(!is.na(altura)) %>% 
+  # filtrando pelos mais altos de 200cm(2metros)
+  filter(altura >= 200) %>%
   # para ordenar as barras do maior para o menor 
   mutate(nome = fct_reorder(nome, -altura)) %>%
   # começa o plot
