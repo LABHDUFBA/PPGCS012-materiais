@@ -10,7 +10,7 @@ corpus_pt = open('abstract.txt', 'r').read()
 chunked_text_pt = corpus_pt.split('paper_abstract')
 print(len(chunked_text_pt))
 
-chunked_documents_pt = list(nlp.pipe(chunked_text_pt))
+chunked_documents_pt = list(nlp.pipe(chunked_text_pt[:500]))
 
 people = []
 for document in chunked_documents_pt:
