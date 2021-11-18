@@ -33,8 +33,9 @@ getReaders() # formatos que que podem ser lidos
 ### Vamos criar um data-frame chamado "bozo" comos tweets de bozo
 
 
-bozo <- read.csv("./Slides - R/dados/2021-11-12 - 11-14-22 - jairbolsonaro.csv", 
-                encoding = "UTF-8") # lendo o arquivo CSV
+minsaude <- read.csv("./Slides - R/dados/2020-09-01 - 23-01-57 - minsaude.csv",
+                 header = T,
+                 encoding = "UTF-8") # lendo o arquivo CSV
 
 # Se a coluna não tiver no encondig: bozo$tweet <- Encoding("UTF-8")
 
