@@ -53,3 +53,38 @@ p1 <- df %>%
   theme(plot.title = element_text(hjust = 0.5))
 p1
 
+library(tm) # Framework for text mining
+library(dplyr) # Data preparation and pipes $>$
+library(ggplot2) # for plotting word frequencies
+library(wordcloud) # wordclouds!
+library(tidyverse)
+
+
+corpus <- Corpus(VectorSource(df$texto))
+corpus
+
+stopwords_pt <- stopwords("pt")
+## Adding words in stopwords list
+stopwords_add <- c("todo","hoje","pode","mil","dia","vai","saiba", "é", 
+                   "sobre", "confira", "contra", "todos", "destes")
+stopwords_pt <- c(stopwords_add, stopwords("pt"))
+
+dtm <- DocumentTermMatrix(corpus,
+                          control = list(stopwords_pt = TRUE,
+                                         tolower = TRUE,
+                                         removeNumbers = TRUE,
+                                         removePunctuation = TRUE
+                                         # opcional
+                                         #stemming=TRUE
+                          ))
+
+
+# Ordenando as frequências (termos mais ou menos frequentes)
+
+freq <- colSums(as.matrix(dtm))
+freq[1:5]
+length(freq)
+# ordenando 
+ord_freq <- sort(freq, decreasing = T)
+# termos mais fequentes
+head(ord_freq)
