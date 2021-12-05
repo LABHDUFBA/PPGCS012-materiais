@@ -23,7 +23,7 @@
 ## Trata-se de uma implementação da gramática dos gráficos 
 ## em camadas no R.
 
-## ggplot: 7 elementos ---------------------------------------------------
+## ggplot2: 7 elementos ---------------------------------------------------
 
 # FUNDAMENTAIS ---------------------------
 
@@ -35,7 +35,7 @@
 
 ### 4. estatísticas - stat() - mediana, máximo
 ### 5. facetas - facet()
-### 6.coordenadas - coord() - polar, cartesiana
+### 6. coordenadas - coord() - polar, cartesiana
 ### 7. t(h)emas - theme() - eixos, título
 
 ### 8. plus: annotated!
@@ -47,9 +47,9 @@
 ## data + aes + geom
 
 ggplot(data = nome_de_um_dataframe,
-       aes(x = variável1,
-           y = variável2)) +
-  geom_col()
+       aes(x = variável1, y = variável2)) +
+  geom_col()+
+ 
 
 ## ao vivo:
 
@@ -208,7 +208,7 @@ ggplot(starwars,
            y = altura)) +
   geom_point()+
   # apague o final _bw e veja as variações
-  theme_bw()
+  theme_minimal()
 
 #### Titulo do gráfico, nomes dos eixos 
 
@@ -222,8 +222,8 @@ ggplot(starwars,
   # para centralizar o título (sempre vai ser isso)
   theme(plot.title = element_text(hjust = 0.5))+
   # nomes dos eixos
-  xlab("Massa (kg)") + # para o nome do eixo x
-  ylab("Altura (cm)") # para o nome do eixo y
+  xlab("") + # para o nome do eixo x
+  ylab("") # para o nome do eixo y
 
 
 #### Titulo do gráfico, nomes dos eixos 
@@ -238,7 +238,7 @@ ggplot(starwars,
   theme(plot.title = element_text(hjust = 0.5))+
   # nomes dos eixos
   xlab("") + # Quando quiser suprimir o nome!
-  ylab("Massa (kg)") # para o nome do eixo y
+  ylab("kg") # para o nome do eixo y
 
 
 
@@ -262,13 +262,13 @@ ggplot(starwars,
   theme(legend.position = "bottom") # legenda embaixo do gráfico
 
 
-### Titulo + subtítulo
+### Titulo + subtítulo e atribuindo a um objeto
 
 
-ggplot(starwars,
+graf1 <- ggplot(starwars,
        aes(altura, fill = especie)) +
   # contagem com barras
-  geom_histogram()+
+  geom_histogram(show.legend = F)+
   # facetas por especie
   facet_wrap(~especie)+
   # título e subtítulo
@@ -279,10 +279,10 @@ ggplot(starwars,
         plot.subtitle = element_text(hjust = 0.5))+
   # nomes dos eixos
   xlab("") + # Quando quiser suprimir o nome!
-  ylab("") + # Quando quiser suprimir o nome!
-  theme(legend.position = "") # Quando quiser suprimir a legenda!
+  ylab("")  # Quando quiser suprimir o nome!
+ 
 
-
+graf1
 
 
 ############# ATENÇÃO ####################

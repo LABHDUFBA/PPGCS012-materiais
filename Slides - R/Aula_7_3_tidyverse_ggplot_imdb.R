@@ -54,6 +54,8 @@ imdb %>%
            label = "Pirates of the Caribbean: \n At World's End",
            color = "red")
 
+#### 20 filmes mais lucrativos 
+
 
 imdb %>%
   #

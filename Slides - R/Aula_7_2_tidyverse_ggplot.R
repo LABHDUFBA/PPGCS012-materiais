@@ -36,33 +36,31 @@ starwars %>%
 
 starwars %>% 
   # calcule o IMC
-  mutate() %>%
+  mutate(IMC = massa / ((altura/100)^2)) %>%
   # filter NA
-  filter() %>% 
+  filter(!is.na(IMC)) %>% 
   # selecionar apenas o nome e o IMC
-  select() %>% 
+  select(nome, IMC) %>% 
   # para ordenar as barras do maior para o menor 
   mutate(nome = fct_reorder(nome, -IMC)) %>%
   # plot aes
-  ggplot(aes(x = ,
-             y = , 
-             fill = )) +
+  ggplot(aes(x = IMC ,
+             y = nome , 
+             fill = IMC)) +
   # escolha o geom de colunas
-  geom_ +
+  geom_col(show.legend = F) +
   # tema de sua preferência
-  theme_ +
+  theme_gray() +
   # insira um título
-  __________ + 
+  ggtitle("IMC dos personagens de Starwars")+ 
   # para centralizar o título (sempre vai ser isso)
   theme(plot.title = element_text(hjust = 0.5),
         # editando o tamanho do texto do eixo y 
-        axis.text.y = element_text(size = 7))+
+        axis.text.y = element_text(size = 8))+
   # suprima o nome do eixo x
-  _______ + 
+  xlab("") + 
   # suprima o nome do eixo x
-  ____________+
-  # suprima a legenda!
-  ___________________________
+  ylab("")
   
 
 
@@ -70,21 +68,21 @@ starwars %>%
 
 starwars %>% 
   # filter genero masculino
-  filter() %>% 
+  filter(genero == "Masculino") %>% 
   # agrupe por especie
   group_by(especie) %>% 
   # Summarise a média da altura
-  summarise(media_altura = mean()) %>% 
+  summarise(media_altura = mean(altura)) %>% 
   # filtrando e eliminando os NA de media_altura
-  filter() %>%   
+  filter(!is.na(media_altura)) %>%   
   # para ordenar as barras do maior para o menor 
   mutate(especie = fct_reorder(especie, -media_altura)) %>%
   # plot
-  ggplot(aes(x = media_altura, y = , fill = ))+
+  ggplot(aes(x = media_altura, y = especie , fill = media_altura))+
   # escolha o geom
-  geom_()+
+  geom_col(show.legend = F)+
   # escolha o seu tema
-  theme_()+
+  theme_gray()+
   # título e subtítulo
   ggtitle("Gráfico da média de altura das diferentes espécies", 
           subtitle = "elaborado no curso de ciência social computacional")+ 
@@ -92,8 +90,6 @@ starwars %>%
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5))+
   # suprima o nome do eixo x
-  _______ + 
-  # suprima o nome do eixo x
-  ____________+
-  # suprima a legenda!
-  _______________________
+  xlab("")+ 
+  # suprima o nome do eixo y
+  ylab("")
