@@ -13,3 +13,10 @@ Após finalizar o upload, faço um commit para um novo `branch` com o seu nome, 
 
 ![commit](https://user-images.githubusercontent.com/58128421/150833434-f9528e67-8bc9-4b89-876f-6f8c0c53d0b5.png)
 
+Em seguida, crie um `Pull Request` a partir do seu branch:
+
+![PR](https://user-images.githubusercontent.com/58128421/150833843-3a5530d3-8030-4e78-ae34-bec7049b5d48.png)
+
+Pronto!
+
+Agora eu ou @leofn vamos aprovar seu pull request e corrigir o trabalho.
